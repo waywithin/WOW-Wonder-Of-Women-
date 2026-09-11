@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, jsonify, send_from_directory
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
-app = Flask(__name__, template_folder='.', static_folder='static', static_url_path='/static')
+app = Flask(__name__, template_folder='.')
 CORS(app)  # Enables CORS for all routes so the frontend can connect seamlessly
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'uploads')
@@ -54,9 +54,9 @@ def save_upload_file(file_obj):
         return unique_name
     return None
 
-@app.route('/logo.png')
+@app.route('/logo.jpg')
 def serve_logo():
-    return send_from_directory(os.path.dirname(__file__), 'logo.png')
+    return send_from_directory(os.path.dirname(__file__), 'logo.jpg')
 
 @app.route('/')
 def index():
