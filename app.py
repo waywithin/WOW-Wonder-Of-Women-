@@ -54,6 +54,10 @@ def save_upload_file(file_obj):
         return unique_name
     return None
 
+@app.route('/logo.png')
+def serve_logo():
+    return send_from_directory(os.path.dirname(__file__), 'logo.png')
+
 @app.route('/')
 def index():
     return render_template('index.html')
